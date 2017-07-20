@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Twitter Timeline by Bharat</title>
+
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div class="container"> 
+	<div class="topbar">
+		<div class="logo left"><a href="#"><l class="fa fa-twitter"></l></a></div>
+		<ul>
+			<li><a id="all">All Users</a></li>
+			<li><a id="user2">User 2</a></li>
+			<li><a id="user1">User 1</a></li>
+		</ul>
+    </div>
+
+    <div class="sidebar">
+    	<div class="user-profile">
+    		<div class="profile-header">
+    			<img class="avatar" src="img/user2.jpg" alt="Ash" />
+    		</div>
+		    
+		  <div class="bio">
+		  	Bharat Patil
+		  </div>
+		  <div class="username">@bharat99</div>
+		</div>
+    </div>
+
+    <div class="content">
+
+    	<div class="tweet_box">
+
+			<form id="tweetForm" action="submit.php" method="post">
+
+				<label for="inputField">Compose new Tweet</label>
+
+				<textarea class="tweet_textbox" name="inputField" id="inputField" tabindex="1" rows="2" cols="40"></textarea>
+
+				<span class="counter">140</span>
+
+				<input class="submitButton inact" name="submit" type="submit" value="Tweet" disabled="disabled" />
+
+				<div id="twitter-container"></div>
+
+				<div class="clear"></div>
+
+			</form>
+
+	    </div>
+
+	    <div class="timeline_box">
+	    	<h3 class="timeline">Tweets</h3>
+
+			<ul class="latest_statuses"></ul>
+
+			<ul class="statuses loaded"></ul>
+			 
+	    </div>
+		
+	</div>
+
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

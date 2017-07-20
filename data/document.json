@@ -1,0 +1,92 @@
+  [ {
+    "name": "John Doe",
+    "username": "John123",
+    "id": 1,
+    "url": "",
+    "profile_image_url":"img/user3.jpg",
+    "profile_background_image_url": "",
+    "following": 20,
+    "followers":10,
+    "tweets": [
+      {
+        "id": "1",
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "time": "2017-07-17 15:19:23",
+        "tweetImg":"",
+        "totalReply":44,
+        "retweets":870,
+        "likes":180
+      },
+      {
+        "id": "2",
+        "comment": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "time": "2017-07-10 05:19:23",
+        "tweetImg":"img/b1.jpg",
+        "totalReply":94,
+        "retweets":7,
+        "likes":8
+      },
+      {
+        "id": "3",
+        "comment": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "time": "2017-07-18 05:19:23",
+        "tweetImg":"",
+        "totalReply":440,
+        "retweets":870,
+        "likes":108
+      }
+      ]
+  },
+  
+  {
+    "name": "Jane Smith",
+    "username": "JaneSmith",
+    "id": 2,
+    "url": "",
+    "profile_image_url":"img/user1.jpg",
+    "profile_background_image_url": "",
+    "following": 200,
+    "followers":100,
+    "tweets": [
+       {
+        "id": "1",
+        "comment": "There are many variations of passages of Lorem Ipsum available.",
+        "time": "2017-07-17 15:19:23",
+        "tweetImg":"",
+        "totalReply":4,
+        "retweets":7,
+        "likes":10
+      },
+      {
+        "id": "2",
+        "comment": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.",
+        "time": "2017-07-10 05:19:23",
+        "tweetImg":"img/b2.jpg",
+        "totalReply":4,
+        "retweets":47,
+        "likes":108
+      },
+      {
+        "id": "3",
+        "comment": "Addd Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.",
+        "time": "2017-07-18 05:19:23",
+        "tweetImg":"",
+        "totalReply":4,
+        "retweets":7,
+        "likes":8
+      },
+      {
+        "id": "4",
+        "comment": "Addd Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.",
+        "time": "2017-07-18 05:19:23",
+        "tweetImg":"",
+        "totalReply":4,
+        "retweets":7,
+        "likes":8
+      }
+      ]
+  }
+]
+
+
+ 
