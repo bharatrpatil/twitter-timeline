@@ -2,7 +2,7 @@
 
 	define('INCLUDE_CHECK',1);
 	require "connect.php";
-
+	date_default_timezone_set('Asia/Kolkata');
 	if(ini_get('magic_quotes_gpc'))
 	$_POST['inputField']=stripslashes($_POST['inputField']);
 
@@ -11,7 +11,8 @@
 	if(mb_strlen($_POST['inputField']) < 1 || mb_strlen($_POST['inputField'])>140)
 	die("0");
 
-	mysql_query("INSERT INTO demo_twitter_timeline SET tweet='".$_POST['inputField']."',dt=NOW()");
+	$date = date("Y-m-d H:i:s");
+	mysql_query("INSERT INTO demo_twitter_timeline SET tweet='".$_POST['inputField']."',dt='".$date."'");
 
 	if(mysql_affected_rows($link)!=1)
 	die("0");
