@@ -13,10 +13,8 @@ $(document).ready(function(){
 	});
 
 	//get all user data
-	getData();
-
-	getUser1Data()
-	getUser2Data()
+	getData(); //get json file
+	getDbData(); // get db data
 });
 
 
@@ -44,12 +42,6 @@ function recount()
 		$('.counter').css('color','#cccccc');
 }
 
-$('.trigger').click(function() {
-     $('.modal-wrapper').toggleClass('open');
-    $('.page-wrapper').toggleClass('blur');
-     return false;
-});
-
 function tweet()
 {
 	var submitData = $('#tweetForm').serialize();
@@ -65,10 +57,10 @@ function tweet()
 			var time = timeAgo(date.toString());
 			var buttons = '<div class="bottom_buttons"><span><a href=""><i class="fa fa-comment-o"></i>'+ data.totalReply + '</a></span><span><a href=""><i class="fa fa-retweet"></i>'+ data.retweets + '</a></span><span><a href=""><i class="fa fa-heart-o"></i>'+ data.likes + '</a></span></div>';
 
-			var li = '<li><a href="#"><img class="avatar" src="img/user2.jpg" alt="avatar" /></a><div class="tweetTxt"><strong><a href="#">'+ data.name +'</a></strong><span class="username2">'+ '@' +data.username +'</span><span class="date">' + time + '</span><div class="comment">'+ data.tweet + '</div></div>'+ buttons +'<div class="clear"></div></li>';
+			var li = '<li><a href="#"><img class="avatar" src="'+data.profile_image_url+'" alt="avatar" /></a><div class="tweetTxt"><strong><a href="#">'+ data.name +'</a></strong><span class="username2">'+ '@' +data.username +'</span><span class="date">' + time + '</span><div class="comment">'+ data.tweet + '</div></div>'+ buttons +'<div class="clear"></div></li>';
 			var msg ='';
-				$('ul.latest_statuses li:first-child').before(li);
-				$("ul.latest_statuses:empty").append(li);
+				$('ul.statuses li:first-child').before(li);
+				$("ul.statuses:empty").append(li);
 				
 				$('#lastTweet').html($('#inputField').val());
 				
@@ -144,7 +136,6 @@ function getData() {
 		url: url,
 		success: function(responseText) {
 			var data = responseText;
-			console.log(data);
 			var li = '';
 			for (var i = 0; i < data.length; i++) {
 				li += setTweetData(data[i]);
@@ -154,51 +145,58 @@ function getData() {
 	});
 }
 
-function getUser1Data() {
-	$('#user1').click(function () {
-		var url = 'data/document.json';
-		$.ajax({
-			type: 'GET',
-			data: '',
-			url: url,
-			success: function(responseText) {
-				var data = responseText;
-				var li = '';
+function getDbData() {	
+	var url = 'getData.php';
+	$.ajax({
+		type: 'GET',
+		data: '',
+		url: url,
+		success: function(response) {
+			if (response) {
+				var data = JSON.parse(response);
 				for (var i = 0; i < data.length; i++) {
-					if (data[i].id === 1) {
-						li = setTweetData(data[i]);
-					}
+					var date = data[i].date;
+					var time = timeAgo(date.toString());
+					var buttons = '<div class="bottom_buttons"><span><a href=""><i class="fa fa-comment-o"></i>'+ data[i].totalReply + '</a></span><span><a href=""><i class="fa fa-retweet"></i>'+ data[i].retweets + '</a></span><span><a href=""><i class="fa fa-heart-o"></i>'+ data[i].likes + '</a></span></div>';
+
+					var li = '<li><a href="#"><img class="avatar" src="img/user2.jpg" alt="avatar" /></a><div class="tweetTxt"><strong><a href="#">'+ data[i].name +'</a></strong><span class="username2">'+ '@' +data[i].username +'</span><span class="date">' + time + '</span><div class="comment">'+ data[i].tweet + '</div></div>'+ buttons +'<div class="clear"></div></li>';
+					$('ul.statuses li:first-child').before(li);
+					$("ul.statuses:empty").html(li);
 				}
-				$('.statuses').html(li);
-
-				setProfileData(data[0]);
 			}
-		});
-	});			
+		}
+	});
+}
 
+function getUser1Data() {
+	var url = 'data/user1.json';
+	$.ajax({
+		type: 'GET',
+		data: '',
+		url: url,
+		success: function(responseText) {
+			common(responseText);
+		}
+	});
 }
 
 function getUser2Data() {
-	$('#user2').click(function () {
-		var url = 'data/document.json';
-		$.ajax({
-			type: 'GET',
-			data: '',
-			url: url,
-			success: function(responseText) {
-				var data = responseText;
-				var li = '';
-				var buttons = '';
-				for (var i = 0; i < data.length; i++) {
-					if (data[i].id === 2) {
-						li = setTweetData(data[i]);
-					}
-				}
-				$('.statuses').html(li);
-				setProfileData(data[1]);
-			}
-		});
+	var url = 'data/user2.json';
+	$.ajax({
+		type: 'GET',
+		data: '',
+		url: url,
+		success: function(responseText) {
+			common(responseText);
+		}
 	});
+}
+
+function common(data) {
+	var li = '';		
+	li = setTweetData(data);			
+	$('.statuses').html(li);
+	setProfileData(data);
 }
 
 function setTweetData(data) {
@@ -222,4 +220,15 @@ function setProfileData(data) {
 
 $('#all').click(function() {
 	getData();
+	getDbData();
+});
+
+$('#user1').click(function() {
+	getUser1Data();
+	getDbData();
+});
+
+$('#user2').click(function() {
+	getUser2Data();
+	getDbData();
 });

@@ -30,6 +30,7 @@
 	$encode["totalReply"] = 0;
 	$encode["retweets"] = 0;
 	$encode["likes"] = 0;
+	$encode["profile_image_url"] = "img/user2.jpg";
 
 	echo json_encode($encode);
 
